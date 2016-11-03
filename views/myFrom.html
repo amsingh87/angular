@@ -1,0 +1,104 @@
+<!doctype HTML>
+
+<html>
+
+<head>
+    <title>Angular Form</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .error-msg {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tabs">
+        <ul>
+            <!--<li><a href="#formTab">Form</a></li>-->
+            <!-- <li><a href="#resultTab">Result</a></li>-->
+        </ul>
+        <div id="formTab">
+            <form name="contactInfo">
+                <div class="row">
+                    <div class="col-md-2">
+                        First Name
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" ng-model="personModel.firstName" placeholder="Enter First Name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Last Name
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" ng-model="personModel.lastName" placeholder="Enter Last Name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Address
+                    </div>
+                    <div class="col-md-4">
+                        <input type='text' ng-model="personModel.address" placeholder="Enter Address">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Date of Birth
+                    </div>
+                    <div class="col-md-4">
+                        <input type='date' ng-model="personModel.dob" placeholder="Enter Date of Birth">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Phone Number
+                    </div>
+                    <div class="col-md-4">
+                        <input type='text' ng-model="personModel.phoneNumber" placeholder="Enter phone number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Country
+                    </div>
+                    <div class="col-md-4">
+                        <select ng-model="personModel.country">
+                            <option value="">Select a Country</option>
+                            <option value="Nepal">Nepal</option>
+                            <option value="USA">United States</option>
+                            <option value="london">London</option>
+                            <option value="Australia">Australia</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Gender
+                    </div>
+                    <div class="col-md-4">
+                        <input type="radio" ng-model="personModel.gender" value="Male">Male
+                        <input type="radio" ng-model="personModel.gender" value="Female">Female
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Cars
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" ng-model="personModel.car" value="Audi">Audi
+                        <input type="checkbox" ng-model="personModel.car" value="Lexus">Lexus
+                        <input type="checkbox" ng-model="personModel.car" value="BMW">BMW
+                    </div>
+                </div>
+            </form>
+            <button type="submit" class="btn btn-primary" ng-click="addPerson()">Submit</button>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>First Project</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        h3 {
+            color: coral;
+        }
+        
+        h4 {
+            color: darkgoldenrod;
+        }
+    </style>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<!--declaring angular application-->
+
+<body ng-app="appName">
+    <h1 style="color:orange">Hello World</h1>
+    <h2 style="color:pink">Hello World</h2>
+    <h3>Hello World</h3>
+    <h4>Hello World</h4>
+    <h5>Hello World</h5>
+    <h6>Hello World</h6>
+    <a href='/views/mypage.html'> link to my page</a>
+    <a href='/views/mypage.html' target="_blank"> link to my page on new tab</a>
+    <div ng-controller="appCtrl">
+        Two way data binding {{header}}
+
+        <br> One way data binding {{::header}}
+        <br>
+        <sample-header></sample-header>
+        <button ng-click="test()">change header</button>
+        <br>
+        <div ng-controller="personController">
+            <h1>From person Control</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <input type="text" ng-model="personModel.firstName" placeholder="Enter a first name">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" ng-model="personModel.lastName" placeholder="Enter a last name">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" ng-model="personModel.address" placeholder="Enter an address">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" ng-model="personModel.phoneNumber" placeholder="Enter a phone number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>First Name</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Address</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Phone Number</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        {{personModel.firstName}}
+                    </div>
+                    <div class="col-md-2">
+                        {{personModel.lastName}}
+                    </div>
+                    <div class="col-md-2">
+                        {{personModel.address}}
+                    </div>
+                    <div class="col-md-2">
+                        {{personModel.phoneNumber}}
+                    </div>
+                </div>
+
+            </div>
+            <div ng-show="forNgShow">
+                This content is for testing ng show
+            </div>
+            <div ng-if="forNgIf">
+                This content is for testing ng if
+            </div>
+            <button ng-click="toggleForShow()" class="btn btn-warning">NG-SHOW TOGGLE</button>
+            <button ng-click="toggleForIf()" class="btn btn-danger">NG-IF TOGGLE</button>
+
+        </div>
+    </div>
+    <div container>
+        <h1>Learning directives</h1> As Element
+        <sample-header></sample-header>
+        <br>
+        <!--As Attribut
+        <div sample-header></div>
+        <br> As class
+        <div class="sample-header"></div>-->
+    </div>
+    <script type="text/javascript" src="/scripts/block.js"></script>
+    <script type="text/javascript" src="/scripts/array.js"></script>
+    <script type="text/javascript" src="/scripts/function.js"></script>
+    <script type="text/javascript" src="/scripts/person.js"></script>
+    <!--declaring dependencies for angular-->
+    <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/appCtrl.js"></script>
+    <script type="text/javascript" src="/scripts/directories/firstDirective.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/personController.js"></script>
+
+</body>
+
+</html>

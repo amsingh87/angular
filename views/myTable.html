@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-1">
+        <label ng-click='myTable.toggleOrder("firstName")'>First Name</label>
+    </div>
+    <div class="col-md-1">
+        <label ng-click='myTable.toggleOrder("lastName")'>Last Name</label>
+    </div>
+    <div class="col-md-1">
+        <label ng-click='myTable.toggleOrder("address")'>Address</label>
+    </div>
+    <div class="col-md-1">
+        <label ng-click='myTable.toggleOrder("dob")'>Date of Birth</label>
+    </div>
+    <div class="col-md-2">
+        <label ng-click='myTable.toggleOrder("phoneNumber")'>Phone Number</label>
+    </div>
+    <div class="col-md-1">
+        <label ng-click='myTable.toggleOrder("gender")'>Gender</label>
+    </div>
+    <div class="col-md-1">
+        <label ng-click='myTable.toggleOrder("car")'>Cars</label>
+    </div>
+</div>
+<input type="text" ng-model="search" placeholder="Search">
+<div class="row" ng-repeat="person in personArray|filter:search">
+    <div class="col-md-1">
+        {{person.firstName}}
+    </div>
+    <div class="col-md-1">
+        {{person.lastName}}
+    </div>
+    <div class="col-md-1">
+        {{person.address}}
+    </div>
+    <div class="col-md-1">
+        {{person.dob| date: "MM/dd/yyyy"}}
+    </div>
+    <div class="col-md-2">
+        {{person.phoneNumber}}
+    </div>
+    <div class="col-md-1">
+        {{person.gender}}
+    </div>
+    <div class="col-md-1" ng-model="car.selected">
+        {{person.car}}
+    </div>
+</div>
+
+<!--getting the person Array from personController-->
+<!--<ol>
+    <li ng-repeat="person in personArray">{{person.lastName}},{{person.firstName}}</li>
+</ol>-->

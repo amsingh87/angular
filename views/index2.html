@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>First Project</title>
+
+    <!--<link rel="stylesheet" href="/css/style.css">-->
+    <style>
+        h3 {
+            color: coral;
+        }
+        
+        h4 {
+            color: darkgoldenrod;
+        }
+        
+        label {
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<!--declaring angular application-->
+
+<body ng-app="appName">
+
+    <!--<div ng-controller="appCtrl">
+        Header value from controller: {{header}}
+        <sample-header> </sample-header>
+    </div>
+    <sample-header></sample-header>-->
+
+    <h1>Playing with custom directives</h1>
+    <person-form></person-form>
+
+    <person-table></person-table>
+
+    <!--Learning ng-repeat-->
+    <!--<div ng-controller="personController"></div>-->
+
+    <!--<ol>
+        <li ng-repeat="person in personArray">{{person.lastName}},{{person.firstName}}</li>
+    </ol>-->
+
+
+
+    <!--<script type="text/javascript" src="/scripts/block.js"></script>
+<script type="text/javascript" src="/scripts/array.js"></script>
+<script type="text/javascript" src="/scripts/function.js"></script>
+<script type="text/javascript" src="/scripts/person.js"></script>-->
+    <!--declaring dependencies for angular-->
+    <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/appCtrl.js"></script>
+    <script type="text/javascript" src="/scripts/directories/personForm.js"></script>
+    <script type="text/javascript" src="/scripts/directories/personTable.js"></script>
+    <script type="text/javascript" src="/scripts/directories/firstDirective.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/personController.js"></script>
+    <script type="text/javascript" src="/scripts/services/personService.js"></script>
+    <script type="text/javascript" src="/scripts/services/personFactory.js"></script>
+
+
+</body>
+
+</html>
