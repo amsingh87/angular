@@ -22,9 +22,8 @@
     </div>
 </div>
 <input type="text" ng-model="search" placeholder="Search">
-<div class="row" ng-repeat="person in personArray|filter:search">
-    <div class="col-md-1">
-        {{person.firstName}}
+<div class="row" ng-repeat="person in personArray|filter:search|orderBy:myTable.sortBy:myTable.sortOrder ">
+    <div class="col-md-1">{{person.firstName}}
     </div>
     <div class="col-md-1">
         {{person.lastName}}

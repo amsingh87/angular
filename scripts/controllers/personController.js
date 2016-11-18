@@ -1,6 +1,6 @@
 'use strict';
 angular.module("appName")
-    .controller("personController", ["$scope", "personService", function ($scope, personService) {
+    .controller("personController", ["$scope", "personService", "personFactory", function ($scope, personService, personFactory) {
         $scope.test = "sample";
         //creating model for person form
         //json object
@@ -11,12 +11,22 @@ angular.module("appName")
             phoneNumber: ""
         };
 
+        $scope.personModelEdit = {
+            firstName: "",
+            lastName: "",
+            address: "",
+            phoneNumber: ""
+        };
 
-        console.log(personService.getElement(0));
-        $scope.personArray = personService.personArray;
+        //personService.getElement(0);
+        personService.personObj = $scope.personModel;
 
+        $scope.personArray = [];
 
-        console.log($scope.personArray);
+        updatePersonList();
+
+        //  console.log($scope.personArray);
+        //  console.log(personFactory.getX());
 
         $scope.forNgShow = true;
         $scope.forNgIf = true;
@@ -41,35 +51,71 @@ angular.module("appName")
                 $scope.forNgIf = true;
         }
 */
-        $scope.personModel.firstName = "John";
-        $scope.personModel.lastName = "Mcmor";
-        $scope.personModel.address = "Main Street";
-        $scope.personModel.phoneNumber = "123-123-1233";
+            /* $scope.personModel.firstName = "John";
+             $scope.personModel.lastName = "Mcmor";
+             $scope.personModel.address = "Main Street";
+             $scope.personModel.phoneNumber = "123-123-1233";*/
 
         $scope.personTable = {
-                sortBy: 'firstName',
-                sortOrder: false,
-                toggleOrder: function (name) {
-                    if ($scope.personTable.sortBy != name) {
-                        $scope.personTable.sortOrder = false;
-                        $scope.personTable.sortBy = name;
-                    } else {
+            sortBy: 'firstname',
+            sortOrder: false,
+            toggleOrder: function (name) {
+                if ($scope.personTable.sortBy != name) {
+                    $scope.personTable.sortOrder = false;
+                    $scope.personTable.sortBy = name;
+                } else {
 
-                        $scope.personTable.sortOrder = !$scope.personTable.sortOrder;
-                    }
+                    $scope.personTable.sortOrder = !$scope.personTable.sortOrder;
                 }
             }
-            //defining a function with a json object inside the personform but add 
-            /* $scope.personForm = {
-                 addPerson = function () {
-                     var personObj = {
-                         firstName: $scope.personModel.firstName,
-                         lastName: $scope.personModel.lastName,
-                         address: $scope.personModel.address,
-                         phoneNumber: $scope.personModel.phoneNumber
-                     };
-                     $scope.personArray.push(personObj);
-                     console.log($scope.personArray);
-                 }
-             }*/
-            }]);
+        }
+
+        $scope.personForm = {
+            addPerson: function () {
+                personService.addPerson().then(function (response) {
+                    updatePersonList();
+                });
+            },
+            editPerson: personService.retrievePersonList,
+            deletePerson: function (id) {
+                personService.deletePersonList(id).then(function (response) {
+                    updatePersonList();
+                });
+            },
+            edtPerson: function (object) {
+                console.log(object);
+                $scope.personModelEdit = object;
+            },
+            updatePerson: function (object) {
+                personService.putPersonList(object).then(function () {
+                    updatePersonList();
+                    //  $scope.personModelEdit = "";
+                });
+            }
+        }
+
+
+        //Below this is a private functions
+        function updatePersonList() {
+            //Calling the service to get the person list
+            var personListPromise = personService.getPersonList();
+            personListPromise.then(function (response) {
+                $scope.personArray = response;
+            });
+
+        }
+
+        //defining a function with a json object inside the personform but add 
+        /* $scope.personForm = {
+             addPerson = function () {
+                 var personObj = {
+                     firstName: $scope.personModel.firstName,
+                     lastName: $scope.personModel.lastName,
+                     address: $scope.personModel.address,
+                     phoneNumber: $scope.personModel.phoneNumber
+                 };
+                 $scope.personArray.push(personObj);
+                 console.log($scope.personArray);
+             }
+         }*/
+    }]);

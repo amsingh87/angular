@@ -4,8 +4,8 @@ angular.module("appName").directive("personForm", function () {
         restrict: "EAMC", //E-> Element, A-> Attribute, M->Comment, C-> class
         //you can create a function with the follwing object in the personController but you have to assign the controller:personController in the personObj
         //controller: personController,
-
-        controller: function ($scope) {
+        controller: 'personController',
+        /*controller: function ($scope) {
             $scope.addPerson = function () {
                 var personObj = {
                     firstName: $scope.personModel.firstName,
@@ -17,10 +17,9 @@ angular.module("appName").directive("personForm", function () {
                 console.log($scope.personArray);
 
             }
-        },
+        },*/
         templateUrl: "/views/personForm.html",
         link: function ($scope) {
-            $scope.header = "Good morning";
 
         }
     };
